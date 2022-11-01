@@ -15,7 +15,7 @@ resource "docker_image" "nodered_image" {
   name = "nodered/node-red:latest"
 }
 
-# start the container
+# start t he container
 
 resource "docker_container" "nodered_container" {
   name  = "nodered"
