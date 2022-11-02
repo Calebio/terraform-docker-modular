@@ -32,8 +32,6 @@ output ip-address {
 }
 
 output container-name {
-  value       = docker_container
-  sensitive   = true
-  description = "description"
-  depends_on  = []
+  value       = docker_container.nodered_container.name
+  description = "Name of the container"
 }

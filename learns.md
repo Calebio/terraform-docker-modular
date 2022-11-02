@@ -21,3 +21,5 @@ output ip-address {
   description = "ip address of the container"
 } 
 ````
+
+- To show an output use the command `terraform output`
