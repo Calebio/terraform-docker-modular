@@ -70,11 +70,11 @@ output container-name {
   description = "Name of the container"
 }
 ```
-The above code works only for datatypes of let's say strings and when working with values like ip_addresses you'll use a for loop, example below.
+Here we used join with the for loop to get an output of ip address and port, below is an example <br/>
 
 ```
 output ip-address {
-  value       = [for i in docker_container.nodered_container[*]: i.ip_address]
+  value       = [for i in docker_container.nodered_container[*]: join(":", [i.ip_address], i.ports[*]["external"])]
   description = "ip address of the container"
 }
 
