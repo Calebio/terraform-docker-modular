@@ -43,6 +43,9 @@ resource "random_string" "string_rand" {
   special = false
 }
 ```
+**Keep in mind that when using count, you will always have an index, so you can't reference just the resource anymore and resource name you do need to add that index.**
+
+
 - To make reference to the created random strings below is an example. <br/>
 ```
 resource "docker_container" "nodered_container" {
