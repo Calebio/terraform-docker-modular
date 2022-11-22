@@ -18,7 +18,7 @@ resource "docker_image" "nodered_image" {
 # Generate random strings
 
 resource "random_string" "string_rand" {
-  count = 1
+  count = var.container_count
   length  = 5
   upper = false
   special = false
@@ -28,30 +28,13 @@ resource "random_string" "string_rand" {
 # Create the container
 
 resource "docker_container" "nodered_container" {
-  count = 1
+  count = var.container_count
   name  = join("-", ["nodered", random_string.string_rand[count.index].result]) # this right here was used to reference the random strings and carve out a name for the container
   image = docker_image.nodered_image.latest
   ports {
-    internal = 1880
+    internal = var.intern_port
     # external = 1880
   }
 }
-
-
-output ip-address {
-  value       = [for i in docker_container.nodered_container[*]: join(":", [i.ip_address], i.ports[*]["external"])]
-  description = "ip address of the container"
-}
-
-output container-name {
-  value       = docker_container.nodered_container[*].name
-  description = "Name of the container"
-}
-
-
-# output ip-address-cont-2 {
-#   value       = join(":", [docker_container.nodered_container[1].ip_address, docker_container.nodered_container[1].ports[0].external])
-#   description = "ip address of the container"
-# }
 
 

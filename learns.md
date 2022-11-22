@@ -97,3 +97,6 @@ resource "docker_container" "nodered_container2"{
 
 2. Get the docker_container ID with docker inspect `docker inspect --format="{{.ID}}" = <container name>`
 3. User terraform import command + a bash command to import the container to terraform `terraform import docker_container.nodered_container2 $(docker inspect --format="{{.ID}}" = <container name>)`
+
+- Variable validation : This means adding conditions to a variable, this ensures that the conditions are met and the variables carry the right value.
+
