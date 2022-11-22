@@ -18,7 +18,7 @@ resource "docker_image" "nodered_image" {
 # Generate random strings
 
 resource "random_string" "string_rand" {
-  count = 2
+  count = 1
   length  = 5
   upper = false
   special = false
@@ -28,13 +28,18 @@ resource "random_string" "string_rand" {
 # Create the container
 
 resource "docker_container" "nodered_container" {
-  count = 2
+  count = 1
   name  = join("-", ["nodered", random_string.string_rand[count.index].result]) # this right here was used to reference the random strings and carve out a name for the container
   image = docker_image.nodered_image.latest
   ports {
     internal = 1880
     # external = 1880
   }
+}
+
+resource "docker_container" "nodered_container2"{
+  name = "nodered-rakfo"
+  image = docker_image.nodered_image.latest
 }
 
 
