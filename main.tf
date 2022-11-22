@@ -37,11 +37,6 @@ resource "docker_container" "nodered_container" {
   }
 }
 
-resource "docker_container" "nodered_container2"{
-  name = "nodered-rakfo"
-  image = docker_image.nodered_image.latest
-}
-
 
 output ip-address {
   value       = [for i in docker_container.nodered_container[*]: join(":", [i.ip_address], i.ports[*]["external"])]
