@@ -100,3 +100,28 @@ resource "docker_container" "nodered_container2"{
 
 - Variable validation : This means adding conditions to a variable, this ensures that the conditions are met and the variables carry the right value.
 
+- Hiding sensitive data from displaying at output level.
+You can specify sensitive data you are not willing to display publicly by setting `sensitive = true` at both variable and output level e.g
+
+variable:
+```
+variable intern_port {
+  type = number
+  sensitive = true ##
+
+  validation{
+    condition = var.intern_port == 1880
+    error_message = "the internal port must be 1880"
+  }
+}
+```
+
+output:
+```
+output ip-address {
+  value       = [for i in docker_container.nodered_container[*]: join(":", [i.ip_address], i.ports[*]["external"])]
+  sensitive = true
+  description = "ip address of the container"
+}
+```
+
