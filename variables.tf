@@ -1,6 +1,5 @@
 variable "intern_port" {
   type      = number
-  sensitive = true
 
   validation {
     condition     = var.intern_port == 1880
