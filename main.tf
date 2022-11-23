@@ -18,9 +18,9 @@ resource "docker_image" "nodered_image" {
 # Generate random strings
 
 resource "random_string" "string_rand" {
-  count = var.container_count
+  count   = var.container_count
   length  = 5
-  upper = false
+  upper   = false
   special = false
 }
 
