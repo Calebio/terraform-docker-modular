@@ -124,4 +124,15 @@ output ip-address {
   description = "ip address of the container"
 }
 ```
+### Persisting the container storage
+Persisting is important for the containing and it helps in a case where a the server/container goes offline for a bit, you can get back your work when it comes up again.
 
+We used this code block to add persistence to the container:
+```
+resource "null_resource" "dockervol" {
+  provisioner "local-exec" {
+    command = "mkdir noderedvol/ || true && sudo chown -R 1000:1000 noderedvol/"
+  }
+}
+```
+It's also advisable that you use Ansible to do this because it is more profient in taking care of the the file state
