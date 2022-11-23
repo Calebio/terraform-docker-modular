@@ -135,4 +135,4 @@ resource "null_resource" "dockervol" {
   }
 }
 ```
-It's also advisable that you use Ansible to do this because it is more profient in taking care of the the file state
+It's also advisable that you use Ansible to do this because it is more profient in taking care of the the file state.
