@@ -7,12 +7,27 @@ variable "intern_port" {
   }
 }
 
-variable "container_count" {
-  type    = number
-  default = 1
+variable "ext_port"{
+  type = list
 
   validation {
-    condition     = var.container_count <= 10 && var.container_count > 0
-    error_message = "Each user must not create more than 10 resources(containers) on the development server. Please contact admin."
+    condition     = min(var.ext_port...) >= 1880 && max(var.ext_port...) <= 65535
+    error_message = "The external port must be in the valid port range 0 - 65535."
   }
 }
+
+
+locals {
+  container_count = length(var.ext_port)
+}
+
+
+# variable "container_count" {
+#   type    = number
+#   default = 1
+
+#   validation {
+#     condition     = var.container_count <= 10 && var.container_count > 0
+#     error_message = "Each user must not create more than 10 resources(containers) on the development server. Please contact admin."
+#   }
+# }
