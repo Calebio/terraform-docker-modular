@@ -1,8 +1,8 @@
-variable "env"{
-  type = string
-  default = "dev"
-  description = "Env to depoly to "
-}
+# variable "env"{
+#   type = string
+#   default = "dev"
+#   description = "Env to depoly to "
+# }
 
 variable "image"{
    type = map
@@ -39,7 +39,7 @@ variable "ext_port"{
 
 
 locals {
-  container_count = length(lookup(var.ext_port, var.env))
+  container_count = length(lookup(var.ext_port, terraform.workspace))
 }
 
 
