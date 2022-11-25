@@ -41,6 +41,11 @@ resource "docker_container" "nodered_container" {
     internal = var.intern_port
     external = var.ext_port[count.index]
   }
+
+  volumes {
+    container_path = "/data"
+    host_path      = "${path.cwd}/noderedvol" # this line was used to dynamically grab the path and point to it.. So on a case of change the deployment won't break
+  }
 }
 
 
