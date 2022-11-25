@@ -18,7 +18,7 @@ resource "null_resource" "dockervol" {
 
 # download nodered image
 resource "docker_image" "nodered_image" {
-  name = lookup(var.image, terraform.workspace)
+  name = var.image[terraform.workspace]
 }
 
 # Generate random strings
@@ -39,7 +39,7 @@ resource "docker_container" "nodered_container" {
   image = docker_image.nodered_image.latest
   ports {
     internal = var.intern_port
-    external = lookup(var.ext_port, terraform.workspace)[count.index]
+    external = var.ext_port[terraform.workspace][count.index]
   }
 
   volumes {
