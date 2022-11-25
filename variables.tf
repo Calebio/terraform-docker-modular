@@ -1,3 +1,19 @@
+variable "env"{
+  type = string
+  default = "dev"
+  description = "Env to depoly to "
+}
+
+variable "image"{
+   type = map
+   description = "image for container"
+
+   default = {
+    dev = "nodered/node-red:latest"
+    prod = "nodered/node-red:latest-minimal"
+   }
+}
+
 variable "intern_port" {
   type      = number
 
@@ -8,17 +24,17 @@ variable "intern_port" {
 }
 
 variable "ext_port"{
-  type = list
+  type = map
 
-  validation {
-    condition     = min(var.ext_port...) >= 1880 && max(var.ext_port...) <= 65535
-    error_message = "The external port must be in the valid port range 0 - 65535."
-  }
+  # validation {
+  #   condition     = min(var.ext_port...) >= 1880 && max(var.ext_port...) <= 65535
+  #   error_message = "The external port must be in the valid port range 0 - 65535."
+  # }
 }
 
 
 locals {
-  container_count = length(var.ext_port)
+  container_count = length(lookup(var.ext_port, var.env))
 }
 
 

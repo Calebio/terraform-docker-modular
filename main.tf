@@ -18,7 +18,7 @@ resource "null_resource" "dockervol" {
 
 # download nodered image
 resource "docker_image" "nodered_image" {
-  name = "nodered/node-red:latest"
+  name = lookup(var.image, var.env)
 }
 
 # Generate random strings
@@ -39,7 +39,7 @@ resource "docker_container" "nodered_container" {
   image = docker_image.nodered_image.latest
   ports {
     internal = var.intern_port
-    external = var.ext_port[count.index]
+    external = lookup(var.ext_port, var.env)[count.index]
   }
 
   volumes {
