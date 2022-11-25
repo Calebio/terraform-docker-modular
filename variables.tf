@@ -27,8 +27,13 @@ variable "ext_port"{
   type = map
 
   validation {
-    condition     = min(var.ext_port["dev"]...) >= 1880 && max(var.ext_port["dev"]...) <= 65535
-    error_message = "The external port must be in the valid port range 0 - 65535."
+    condition     = min(var.ext_port["dev"]...) >= 1980 && max(var.ext_port["dev"]...) <= 65535
+    error_message = "The external port must be in the valid port range for dev environment."
+  }
+
+  validation {
+    condition     = min(var.ext_port["prod"]...) >= 1880 && max(var.ext_port["prod"]...) < 1980
+    error_message = "The external port must be in the valid port for prod environment."
   }
 }
 
