@@ -136,3 +136,10 @@ resource "null_resource" "dockervol" {
 }
 ```
 It's also advisable that you use Ansible to do this because it is more profient in taking care of the the file state.
+
+- use the command to install graph :`sudo apt install graphviz` 
+
+- `graphviz` is a tool used to turn the output of `terraform graph` into a either pdf or png. Basically a useful image. 
+
+- `terraform graph | dot -Tpdf > graph-plan.pdf` to export the output into a pdf file.
+
