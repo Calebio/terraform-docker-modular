@@ -1,13 +1,3 @@
-terraform {
-  required_providers {
-    docker = {
-      source = "kreuzwerker/docker"
-    }
-  }
-}
-
-
-provider "docker" {}
 
 # Adding persistence to the containers
 resource "null_resource" "dockervol" {
