@@ -143,3 +143,14 @@ It's also advisable that you use Ansible to do this because it is more profient 
 
 - `terraform graph | dot -Tpdf > graph-plan.pdf` to export the output into a pdf file.
 
+- This error below can be misleading. 
+```
+Error: Unsupported argument
+│ 
+│   on main.tf line 35, in module "container":
+│   35:   host_path_in      = "${path.cwd}/noderedvol" # this line was used to dynamically grab the path and point to it.. So on a case of change the deployment won't break
+│ 
+│ An argument named "host_path_in" is not expected here.
+╵
+```
+If you get this error check your `variable.tf` in the affected module to be sure the problem is not the variable 
