@@ -4,24 +4,24 @@
 #   description = "Env to depoly to "
 # }
 
-variable "image"{
-   type = map
-   description = "image for container"
+variable "image" {
+  type        = map(any)
+  description = "image for container"
 
-   default = {
+  default = {
     nodered = {
-    dev = "nodered/node-red:latest"
-    prod = "nodered/node-red:latest-minimal"
-   }
-   influxdb = {
-    dev = "quay.io/influxdb/influxdb:v2.0.2"
-    prod = "quay.io/influxdb/influxdb:v2.0.2"
-   }
-}
+      dev  = "nodered/node-red:latest"
+      prod = "nodered/node-red:latest-minimal"
+    }
+    influxdb = {
+      dev  = "quay.io/influxdb/influxdb:v2.0.2"
+      prod = "quay.io/influxdb/influxdb:v2.0.2"
+    }
+  }
 }
 
 variable "intern_port" {
-  type      = number
+  type = number
 
   validation {
     condition     = var.intern_port == 1880
@@ -29,8 +29,8 @@ variable "intern_port" {
   }
 }
 
-variable "ext_port"{
-  type = map
+variable "ext_port" {
+  type = map(any)
 
   # validation {
   #   condition     = min(var.ext_port["dev"]...) >= 1980 && max(var.ext_port["dev"]...) <= 65535

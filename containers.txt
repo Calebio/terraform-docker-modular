@@ -1,0 +1,6 @@
+influxdb-dev-1rrle: 172.17.0.3:8187
+influxdb-dev-5e4zb: 172.17.0.2:8186
+nodered-dev-pzjqb: 172.17.0.4:1980
+influxdb-dev-p00df: 172.17.0.2:8187
+influxdb-dev-7t94q: 172.17.0.3:8186
+nodered-dev-75nbc: 172.17.0.4:1980
