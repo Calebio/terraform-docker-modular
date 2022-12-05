@@ -9,7 +9,7 @@ ext_port = {
     prod = [8086]
   }
   grafana = {
-    dev  = [9090]
-    prod = [9091]
+    dev  = [3100]
+    prod = [3000]
   }
 }

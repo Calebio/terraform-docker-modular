@@ -1,9 +1,3 @@
-# variable "env"{
-#   type = string
-#   default = "dev"
-#   description = "Env to depoly to "
-# }
-
 variable "image" {
   type        = map(any)
   description = "image for container"
@@ -16,6 +10,10 @@ variable "image" {
     influxdb = {
       dev  = "quay.io/influxdb/influxdb:v2.0.2"
       prod = "quay.io/influxdb/influxdb:v2.0.2"
+    }
+    grafana = {
+      dev  = "grafana/grafana"
+      prod = "grafana/grafana"
     }
   }
 }
