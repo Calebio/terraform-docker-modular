@@ -4,3 +4,12 @@ nodered-dev-pzjqb: 172.17.0.4:1980
 influxdb-dev-p00df: 172.17.0.2:8187
 influxdb-dev-7t94q: 172.17.0.3:8186
 nodered-dev-75nbc: 172.17.0.4:1980
+grafana-dev-6kxal: 172.17.0.4:3100
+influxdb-dev-u5u0h: 172.17.0.3:8186
+nodered-dev-c2px2: 172.17.0.2:1980
+influxdb-dev-b44xr: 172.17.0.5:8187
+nodered-dev-02wg0: 172.17.0.2:1980
+influxdb-dev-rr44d: 172.17.0.4:8187
+influxdb-dev-rwkh8: 172.17.0.3:8186
+grafana-dev-w2map: 172.17.0.2:3101
+grafana-dev-t8r09: 172.17.0.5:3100
